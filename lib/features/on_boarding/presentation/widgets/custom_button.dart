@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lemo_app/core/theme/app_colors.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class AppButton extends StatelessWidget {
+  const AppButton({
     super.key,
     required int currentPage,
     required List<Map<String, String>> onboardingData,

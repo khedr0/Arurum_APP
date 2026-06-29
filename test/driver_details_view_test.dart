@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lemo_app/features/nav_pages/home/data/models/vehicle_model.dart';
-import 'package:lemo_app/features/nav_pages/home/presentation/view/driver_details_view.dart';
-import 'package:lemo_app/features/nav_pages/home/presentation/widgets/carousel_header.dart';
-import 'package:lemo_app/features/nav_pages/home/presentation/widgets/driver_profile_header_card.dart';
-import 'package:lemo_app/features/nav_pages/home/presentation/widgets/vehicle_features_card.dart';
-import 'package:lemo_app/features/nav_pages/home/presentation/widgets/review_item_widget.dart';
+import 'package:lemo_app/features/passenger/home/data/models/vehicle_model.dart';
+import 'package:lemo_app/features/passenger/home/presentation/view/driver_details_view.dart';
+import 'package:lemo_app/features/passenger/home/presentation/widgets/carousel_header.dart';
+import 'package:lemo_app/features/passenger/home/presentation/widgets/driver_profile_header_card.dart';
+import 'package:lemo_app/features/passenger/home/presentation/widgets/vehicle_features_card.dart';
+import 'package:lemo_app/features/passenger/home/presentation/widgets/review_item_widget.dart';
 
 void main() {
   final testVehicle = VehicleModel(

@@ -24,6 +24,12 @@ class AppColors {
   static const Color cardBackground = Color(0xFF161616);
   static const Color inputBackground = Color(0xFF1E1E1E);
 
+  // Luxury Theme Colors
+  static const Color charcoalGray = Color(0xFF1F1F1F);
+  static const Color warmIvory = Color(0xFFF5F2EB);
+  static const Color champagneGold = Color(0xFFC9A86A);
+  static const Color stoneGray = Color(0xFFA8A8A8);
+
   // Text Colors
   static const Color white = Colors.white;
   static const Color textPrimary = Colors.white;

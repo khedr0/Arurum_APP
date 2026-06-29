@@ -5,13 +5,17 @@ class RoutePaths {
 
   static const login = '/login';
 
-  static const register = '/register';
+  static const roleSelection = '/role-selection';
+
+  static const passengerRegister = '/passenger-register';
+
+  static const chauffeurRegister = '/chauffeur-register';
 
   static const otp = '/otp';
 
-  static const role = '/role';
+  static const passengerMain = '/passenger-main';
 
-  static const main = '/main';
+  static const driverMain = '/driver-main';
 
   static const profile = '/profile';
 

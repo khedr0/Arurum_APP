@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lemo_app/features/nav_pages/profile/presentation/view/profile_view.dart';
-import 'package:lemo_app/features/nav_pages/profile/presentation/widgets/profile_header.dart';
-import 'package:lemo_app/features/nav_pages/profile/presentation/widgets/profile_stat_card.dart';
-import 'package:lemo_app/features/nav_pages/profile/presentation/widgets/logout_button.dart';
+import 'package:lemo_app/features/passenger/profile/presentation/view/profile_view.dart';
+import 'package:lemo_app/features/passenger/profile/presentation/widgets/profile_header.dart';
+import 'package:lemo_app/features/passenger/profile/presentation/widgets/profile_stat_card.dart';
+import 'package:lemo_app/features/passenger/profile/presentation/widgets/logout_button.dart';
 
 void main() {
   testWidgets('ProfileView renders all profile sections and stats correctly', (WidgetTester tester) async {

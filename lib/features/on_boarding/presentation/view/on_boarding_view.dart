@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lemo_app/core/routing/route_paths.dart';
 import 'package:lemo_app/core/theme/app_colors.dart';
 import 'package:lemo_app/core/theme/app_text_style.dart';
-import 'package:lemo_app/features/on_boarding/presentation/widgets/custom_button.dart';
+import 'package:lemo_app/core/widgets/app_button.dart';
 import 'package:lemo_app/gen/assets.gen.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -51,7 +51,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   }
 
   void _navigateToHome() {
-    context.go(RoutePaths.role);
+    context.go(RoutePaths.login);
   }
 
   @override
@@ -181,13 +181,11 @@ class _OnboardingViewState extends State<OnboardingView> {
                       ),
                       SizedBox(height: 24.h),
 
-                      // Action Button
-                      GestureDetector(
-                        onTap: _onNextPage,
-                        child: CustomButton(
-                          currentPage: _currentPage,
-                          onboardingData: _onboardingData,
-                        ),
+                      AppButton(
+                        text: _currentPage == _onboardingData.length - 1
+                            ? 'Get Started'
+                            : 'Next',
+                        onPressed: _onNextPage,
                       ),
                       SizedBox(height: 32.h),
                     ],

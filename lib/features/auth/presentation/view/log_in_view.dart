@@ -3,13 +3,31 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lemo_app/core/routing/route_paths.dart';
 import 'package:lemo_app/core/theme/app_text_style.dart';
-import 'package:lemo_app/core/widgets/custom_button.dart';
+import 'package:lemo_app/core/widgets/app_button.dart';
+import 'package:lemo_app/core/widgets/app_text_field.dart';
+import 'package:lemo_app/features/auth/presentation/view_model/login_view_model.dart';
 import 'package:lemo_app/features/auth/presentation/wedgits/auth_logo_section.dart';
-import 'package:lemo_app/features/auth/presentation/wedgits/auth_text_field.dart';
 import 'package:lemo_app/features/auth/presentation/wedgits/social_login_row.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final viewModel = LoginViewModel();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    viewModel.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +60,8 @@ class LoginView extends StatelessWidget {
 
               const SizedBox(height: 32),
 
-              const AuthTextField(
+              AppTextField(
+                controller: emailController,
                 label: 'Email Address',
                 hint: 'name@gmail.com',
                 prefixIcon: Icons.email_outlined,
@@ -50,7 +69,8 @@ class LoginView extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              const AuthTextField(
+              AppTextField(
+                controller: passwordController,
                 label: 'Password',
                 hint: 'Enter your password',
                 prefixIcon: Icons.lock_outline,
@@ -71,10 +91,27 @@ class LoginView extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              CustomButton(
-                text: 'Sign In',
-                onPressed: () {
-                  (context).push(RoutePaths.main);
+              AnimatedBuilder(
+                animation: viewModel,
+                builder: (context, child) {
+                  if (viewModel.isLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return AppButton(
+                    text: 'Sign In',
+                    onPressed: () {
+                      viewModel.login(
+                        emailController.text,
+                        passwordController.text,
+                        onSuccessPassenger: () {
+                          context.pushReplacement(RoutePaths.passengerMain);
+                        },
+                        onSuccessChauffeur: () {
+                          context.pushReplacement(RoutePaths.driverMain);
+                        },
+                      );
+                    },
+                  );
                 },
               ),
 
@@ -90,13 +127,11 @@ class LoginView extends StatelessWidget {
                   const Text("Don't have an account? "),
                   GestureDetector(
                     onTap: () {
-                      (context).push(RoutePaths.register);
+                      context.push(RoutePaths.roleSelection);
                     },
-                    child: GestureDetector(
-                      child: Text(
-                        'Create an account',
-                        style: AppTextStyles.bold16,
-                      ),
+                    child: Text(
+                      'Create an account',
+                      style: AppTextStyles.bold16,
                     ),
                   ),
                 ],

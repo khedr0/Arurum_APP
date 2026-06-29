@@ -1,16 +1,17 @@
 import 'package:go_router/go_router.dart';
-import 'package:lemo_app/core/navigation/main_navigation_view.dart';
+import 'package:lemo_app/features/passenger/presentation/view/passenger_main_navigation_view.dart';
+import 'package:lemo_app/features/chauffeur/presentation/view/driver_main_navigation_view.dart';
+import 'package:lemo_app/features/auth/presentation/view/chauffeur_register_view.dart';
 import 'package:lemo_app/features/auth/presentation/view/log_in_view.dart';
 import 'package:lemo_app/features/auth/presentation/view/otp_view.dart';
-import 'package:lemo_app/features/auth/presentation/view/register_view.dart';
-import 'package:lemo_app/features/nav_pages/home/data/models/vehicle_model.dart';
-import 'package:lemo_app/features/nav_pages/home/presentation/view/available_drivers_view.dart';
-import 'package:lemo_app/features/nav_pages/home/presentation/view/driver_details_view.dart';
-import 'package:lemo_app/features/nav_pages/profile/presentation/view/change_password_view.dart';
-import 'package:lemo_app/features/nav_pages/profile/presentation/view/personal_info_view.dart';
+import 'package:lemo_app/features/auth/presentation/view/passenger_register_view.dart';
+import 'package:lemo_app/features/auth/presentation/view/role_selection_view.dart';
+import 'package:lemo_app/features/passenger/home/data/models/vehicle_model.dart';
+import 'package:lemo_app/features/passenger/home/presentation/view/available_drivers_view.dart';
+import 'package:lemo_app/features/passenger/home/presentation/view/driver_details_view.dart';
+import 'package:lemo_app/features/passenger/profile/presentation/view/change_password_view.dart';
+import 'package:lemo_app/features/passenger/profile/presentation/view/personal_info_view.dart';
 import 'package:lemo_app/features/on_boarding/presentation/view/on_boarding_view.dart';
-import 'package:lemo_app/features/role/presentation/view/role_view.dart';
-
 
 import 'route_paths.dart';
 
@@ -21,24 +22,32 @@ class AppRouter {
     initialLocation: RoutePaths.onboarding,
 
     routes: [
-
       GoRoute(
         path: RoutePaths.onboarding,
         builder: (context, state) => const OnboardingView(),
       ),
-      GoRoute(
-        path: RoutePaths.role,
-        builder: (context, state) => const RoleView(),
-      ),
 
+      // GoRoute(
+      //   path: RoutePaths.role,
+      //   builder: (context, state) => const RoleView(),
+      // ),
       GoRoute(
         path: RoutePaths.login,
         builder: (context, state) => const LoginView(),
       ),
-      GoRoute(path: '/main', builder: (_, __) => const MainNavigationView()),
       GoRoute(
-        path: RoutePaths.register,
-        builder: (context, state) => const RegisterView(),
+        path: RoutePaths.roleSelection,
+        builder: (context, state) => const RoleSelectionView(),
+      ),
+      GoRoute(path: RoutePaths.passengerMain, builder: (_, __) => const PassengerMainNavigation()),
+      GoRoute(path: RoutePaths.driverMain, builder: (_, __) => const DriverMainNavigation()),
+      GoRoute(
+        path: RoutePaths.passengerRegister,
+        builder: (context, state) => const PassengerRegisterView(),
+      ),
+      GoRoute(
+        path: RoutePaths.chauffeurRegister,
+        builder: (context, state) => const ChauffeurRegisterView(),
       ),
       GoRoute(
         path: RoutePaths.otp,

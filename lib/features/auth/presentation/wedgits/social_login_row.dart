@@ -26,7 +26,7 @@ class SocialLoginRow extends StatelessWidget {
           children: [
             SocialLoginButton(
               onTap: () {
-                (context).push(RoutePaths.register);
+                (context).push(RoutePaths.roleSelection);
               },
               icon: const Icon(Icons.g_mobiledata),
             ),

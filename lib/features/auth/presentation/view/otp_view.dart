@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lemo_app/core/theme/app_text_style.dart';
-import 'package:lemo_app/core/widgets/custom_button.dart';
-import 'package:lemo_app/features/auth/presentation/wedgits/auth_text_field.dart';
+import 'package:lemo_app/core/widgets/app_button.dart';
+import 'package:lemo_app/core/widgets/app_text_field.dart';
 import 'package:lemo_app/gen/assets.gen.dart';
 
 class OtpView extends StatefulWidget {
@@ -63,7 +63,7 @@ class _OtpViewState extends State<OtpView> {
 
               const SizedBox(height: 25),
 
-              AuthTextField(
+              AppTextField(
                 controller: otpController,
                 label: '',
                 hint: 'Enter OTP',
@@ -82,7 +82,7 @@ class _OtpViewState extends State<OtpView> {
                 ),
               ),
 
-              CustomButton(
+              AppButton(
                 text: 'Continue',
                 onPressed: () {
                   debugPrint(otpController.text);
