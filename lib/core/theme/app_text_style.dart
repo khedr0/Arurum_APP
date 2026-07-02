@@ -33,6 +33,12 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.textPrimary,
   );
+  static TextStyle get bold14 => TextStyle(
+    fontFamily: 'SFProDisplay',
+    fontSize: 14.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.textPrimary,
+  );
 
   static TextStyle get medium18 => TextStyle(
     fontFamily: 'SFProDisplay',
@@ -58,6 +64,12 @@ class AppTextStyles {
   static TextStyle get regular14 => TextStyle(
     fontFamily: 'SFProDisplay',
     fontSize: 14.sp,
+    fontWeight: FontWeight.normal,
+    color: AppColors.textSecondary,
+  );
+  static TextStyle get regular16 => TextStyle(
+    fontFamily: 'SFProDisplay',
+    fontSize: 16.sp,
     fontWeight: FontWeight.normal,
     color: AppColors.textSecondary,
   );

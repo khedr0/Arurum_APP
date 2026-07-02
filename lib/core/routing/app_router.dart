@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lemo_app/features/passenger/presentation/view/passenger_main_navigation_view.dart';
 import 'package:lemo_app/features/chauffeur/presentation/view/driver_main_navigation_view.dart';
@@ -12,6 +13,8 @@ import 'package:lemo_app/features/passenger/home/presentation/view/driver_detail
 import 'package:lemo_app/features/passenger/profile/presentation/view/change_password_view.dart';
 import 'package:lemo_app/features/passenger/profile/presentation/view/personal_info_view.dart';
 import 'package:lemo_app/features/on_boarding/presentation/view/on_boarding_view.dart';
+import 'package:lemo_app/features/chauffeur/presentation/navigation/views/navigation_view.dart';
+import 'package:lemo_app/features/chauffeur/presentation/driver_home/models/active_trip_model.dart';
 
 import 'route_paths.dart';
 
@@ -77,6 +80,20 @@ class AppRouter {
         builder: (context, state) {
           final vehicle = state.extra as VehicleModel;
           return DriverDetailsView(vehicle: vehicle);
+        },
+      ),
+      GoRoute(
+        path: RoutePaths.driverNavigation,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final activeTrip = extra?['trip'] as ActiveTripModel?;
+          final onArrive = extra?['onArrive'] as VoidCallback?;
+          final onComplete = extra?['onComplete'] as VoidCallback?;
+          return NavigationView(
+            activeTrip: activeTrip!,
+            onArrive: onArrive,
+            onComplete: onComplete,
+          );
         },
       ),
     ],

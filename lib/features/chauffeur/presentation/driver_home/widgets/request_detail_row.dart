@@ -42,7 +42,7 @@ class RequestDetailRow extends StatelessWidget {
                 Text(
                   value,
                   style: AppTextStyles.medium14.copyWith(
-                    color: AppColors.white,
+                    color: AppColors.warmIvory,
                   ),
                 ),
               ],

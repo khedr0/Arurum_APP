@@ -25,6 +25,7 @@ class AppColors {
   static const Color inputBackground = Color(0xFF1E1E1E);
 
   // Luxury Theme Colors
+  static const Color deepEmeraldGreen = Color(0xFF0F3D2E);
   static const Color charcoalGray = Color(0xFF1F1F1F);
   static const Color warmIvory = Color(0xFFF5F2EB);
   static const Color champagneGold = Color(0xFFC9A86A);

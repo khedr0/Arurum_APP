@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:lemo_app/core/theme/app_colors.dart';
 import 'package:lemo_app/core/theme/app_text_style.dart';
 import 'package:lemo_app/features/chauffeur/presentation/driver_home/models/premium_trip_request.dart';
@@ -10,13 +9,15 @@ import 'package:lemo_app/features/chauffeur/presentation/driver_home/widgets/req
 class PremiumRequestCard extends StatelessWidget {
   final PremiumTripRequest request;
   final VoidCallback onAccept;
-  final VoidCallback onViewDetails;
+  final VoidCallback onSecondaryAction;
+  final String secondaryActionText;
 
   const PremiumRequestCard({
     super.key,
     required this.request,
     required this.onAccept,
-    required this.onViewDetails,
+    required this.onSecondaryAction,
+    this.secondaryActionText = 'View Details',
   });
 
   @override
@@ -27,6 +28,7 @@ class PremiumRequestCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(color: AppColors.stoneGray.withOpacity(0.3), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +38,10 @@ class PremiumRequestCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(request.tripType, style: AppTextStyles.bold16),
+              Text(
+                request.tripType, 
+                style: AppTextStyles.bold16.copyWith(color: AppColors.warmIvory),
+              ),
               Text(
                 '${request.estimatedFare.toInt()} LE',
                 style: TextStyle(
@@ -52,15 +57,28 @@ class PremiumRequestCard extends StatelessWidget {
 
           // Details
           RequestDetailRow(
-            title: 'Pickup Location',
+            title: 'Pickup',
             value: request.pickupLocation,
-            icon: Icons.location_on_outlined,
+            icon: Icons.my_location,
           ),
 
           RequestDetailRow(
-            title: 'Pickup Time',
-            value: DateFormat('dd MMM • HH:mm').format(request.pickupTime),
-            icon: Icons.access_time,
+            title: 'Destination',
+            value: request.destination,
+            icon: Icons.location_on_outlined,
+          ),
+
+          if (request.scheduledTime != null)
+            RequestDetailRow(
+              title: 'Pickup Time',
+              value: request.scheduledTime!,
+              icon: Icons.calendar_today_outlined,
+            ),
+
+          RequestDetailRow(
+            title: 'Vehicle',
+            value: request.requiredVehicleClass,
+            icon: Icons.directions_car_outlined,
           ),
 
           RequestDetailRow(
@@ -72,7 +90,11 @@ class PremiumRequestCard extends StatelessWidget {
           SizedBox(height: 12.h),
 
           // Action Buttons
-          LuxuryActionButtons(onAccept: onAccept, onViewDetails: onViewDetails),
+          LuxuryActionButtons(
+            onAccept: onAccept, 
+            onSecondaryAction: onSecondaryAction,
+            secondaryActionText: secondaryActionText,
+          ),
         ],
       ),
     );

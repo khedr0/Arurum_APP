@@ -26,4 +26,6 @@ class RoutePaths {
   static const rideDetails = '/ride-details';
 
   static const driverDetails = '/driver-details';
+
+  static const driverNavigation = '/driver-navigation';
 }

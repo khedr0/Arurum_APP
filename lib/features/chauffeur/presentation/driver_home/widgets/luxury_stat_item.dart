@@ -47,7 +47,10 @@ class LuxuryStatItem extends StatelessWidget {
             ),
           ),
           SizedBox(height: 6.h),
-          Text(title, style: AppTextStyles.regular12),
+          Text(
+            title, 
+            style: AppTextStyles.regular12.copyWith(color: AppColors.stoneGray),
+          ),
         ],
       ),
     );

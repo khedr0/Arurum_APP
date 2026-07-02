@@ -3,7 +3,8 @@ class PremiumTripRequest {
   final String tripType;
   final double estimatedFare;
   final String pickupLocation;
-  final DateTime pickupTime;
+  final String destination;
+  final String? scheduledTime; // Added for scheduled trips
   final String requiredVehicleClass;
   final double distanceKm;
 
@@ -12,7 +13,8 @@ class PremiumTripRequest {
     required this.tripType,
     required this.estimatedFare,
     required this.pickupLocation,
-    required this.pickupTime,
+    required this.destination,
+    this.scheduledTime,
     required this.requiredVehicleClass,
     required this.distanceKm,
   });

@@ -5,12 +5,16 @@ import 'package:lemo_app/core/theme/app_text_style.dart';
 
 class LuxuryActionButtons extends StatelessWidget {
   final VoidCallback onAccept;
-  final VoidCallback onViewDetails;
+  final VoidCallback onSecondaryAction;
+  final String primaryActionText;
+  final String secondaryActionText;
 
   const LuxuryActionButtons({
     super.key,
     required this.onAccept,
-    required this.onViewDetails,
+    required this.onSecondaryAction,
+    this.primaryActionText = 'Accept Request',
+    this.secondaryActionText = 'View Details',
   });
 
   @override
@@ -19,15 +23,18 @@ class LuxuryActionButtons extends StatelessWidget {
       children: [
         Expanded(
           child: OutlinedButton(
-            onPressed: onViewDetails,
+            onPressed: onSecondaryAction,
             style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.symmetric(vertical: 16.h),
+              padding: EdgeInsets.symmetric(vertical: 14.h),
               side: BorderSide(color: AppColors.stoneGray),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.r),
               ),
             ),
-            child: Text('Cancel', style: AppTextStyles.bold16),
+            child: Text(
+              secondaryActionText,
+              style: AppTextStyles.bold14.copyWith(color: AppColors.warmIvory),
+            ),
           ),
         ),
         SizedBox(width: 16.w),
@@ -35,15 +42,15 @@ class LuxuryActionButtons extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onAccept,
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.champagneGold,
-              padding: EdgeInsets.symmetric(vertical: 16.h),
+              backgroundColor: AppColors.primary,
+              padding: EdgeInsets.symmetric(vertical: 14.h),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.r),
               ),
               elevation: 0,
             ),
             child: Text(
-              'Accept Request',
+              primaryActionText,
               style: AppTextStyles.medium14.copyWith(color: AppColors.black),
             ),
           ),
